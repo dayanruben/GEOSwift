@@ -91,12 +91,12 @@ final class WKTTests: XCTestCase {
     }
 
     func verifyWKTOptions<T>(wktConvertible: T,
-                             useFixedPrecision: Bool,
+                             trim: Bool,
                              roundingPrecision: Int32,
                              expectedWKT: String,
                              line: UInt = #line) where T: WKTConvertible {
         let wktString = try? wktConvertible.wkt(
-            useFixedPrecision: useFixedPrecision,
+            trim: trim,
             roundingPrecision: roundingPrecision)
 
         XCTAssertEqual(wktString, expectedWKT, line: line)
@@ -107,22 +107,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: -1,
             expectedWKT: "POINT (1.1111111111111112 987654321.1234568357467651)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 0,
             expectedWKT: "POINT (1 987654321)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 1,
             expectedWKT: "POINT (1.1 987654321.1)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 5,
             expectedWKT: "POINT (1.11111 987654321.12346)")
     }
@@ -132,22 +132,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: -1,
             expectedWKT: "POINT (1.0000000000000000 987654321.1000000238418579)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 0,
             expectedWKT: "POINT (1 987654321)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 1,
             expectedWKT: "POINT (1.0 987654321.1)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 5,
             expectedWKT: "POINT (1.00000 987654321.10000)")
     }
@@ -157,22 +157,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: -1,
             expectedWKT: "POINT (0.1000000000000000 0.0000001000000000)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 0,
             expectedWKT: "POINT (0 0)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 1,
             expectedWKT: "POINT (0.1 0.0)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: false,
+            trim: false,
             roundingPrecision: 5,
             expectedWKT: "POINT (0.10000 0.00000)")
     }
@@ -182,22 +182,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: -1,
             expectedWKT: "POINT (1.1111111111111112 987654321.1234568)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 0,
             expectedWKT: "POINT (1 987654321)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 1,
             expectedWKT: "POINT (1.1 987654321.1)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 5,
             expectedWKT: "POINT (1.11111 987654321.12346)")
     }
@@ -207,22 +207,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: -1,
             expectedWKT: "POINT (1 987654321.1)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 0,
             expectedWKT: "POINT (1 987654321)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 1,
             expectedWKT: "POINT (1 987654321.1)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 5,
             expectedWKT: "POINT (1 987654321.1)")
     }
@@ -232,22 +232,22 @@ final class WKTTests: XCTestCase {
 
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: -1,
             expectedWKT: "POINT (0.1 0.000000123456)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 0,
             expectedWKT: "POINT (0 0)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 1,
             expectedWKT: "POINT (0.1 0)")
         verifyWKTOptions(
             wktConvertible: point,
-            useFixedPrecision: true,
+            trim: true,
             roundingPrecision: 5,
             expectedWKT: "POINT (0.1 0)")
     }
