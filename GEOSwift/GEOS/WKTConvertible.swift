@@ -11,9 +11,8 @@ public protocol WKTConvertible {
     /// - Parameters:
     ///   - trim: If `true`, digits after the decimal point that are unnecessary for lossless round-tripping are removed.
     ///   - roundingPrecision: If `trim` is `true`, determines the maximum number of digits after the decimal
-    ///     point. If `trim` is false, determines the number of fractional digits. Pass a negative value to default to the
-    ///     rounding precision determined by the underlying precision model.
-    ///     determined by the underlying precision model.
+    ///     point. If `trim` is false, determines the number of digits after the decimal point. Pass a negative value to
+    ///     default to the rounding precision determined by the underlying precision model.
     /// - Returns: A WKT string representation of the `WKTConvertible`.
     func wkt(trim: Bool, roundingPrecision: Int32) throws -> String
 }
